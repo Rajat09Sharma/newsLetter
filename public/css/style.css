@@ -61,7 +61,21 @@ body{
 @media (max-width:1160px) {
   .container{
     display: none;
+    height: 0;
+    width: 0;
   }
-  
+  .box{
+    padding: 0;
+  }
+  /* .box{
+    width: 90%;
+  }
+  .form-signup{
+    width: 90%;
+  }
+  #postbox-img{
+    display: none;
+  }
+   */
 }
 

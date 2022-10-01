@@ -15,7 +15,8 @@ app.get("/",function(req,res){
 });
 
 app.post("/",function(req,res){
-    const firstName=req.body.fname;
+    if(!req.body.fname == 0 && !req.body.lname ==0 && !req.body.email==0 ){
+            const firstName=req.body.fname;
     const lastName=req.body.lname;
     const email=req.body.email;
 
@@ -34,17 +35,17 @@ app.post("/",function(req,res){
     };
 
     const jsonData=JSON.stringify(data);
-    const url ="https://us18.api.mailchimp.com/3.0/lists/fd40b5d4df";
+    const url ="https://us18.api.mailchimp.com/3.0/lists/6091d8d480";
     const options={
         method:"POST",
-        auth:"rajat1:de9225de3e842ab13ac2be830f9ce44e-us18"
+        auth:"rajat1:c1c19a92d504d269e040f18c7d63cb65-us18"
     };
     
     
 
     const request=https.request(url,options,function(response){
 
-        if(response.statusCode===200){
+        if(response.statusCode===200 && firstName !==null){
         res.sendFile(__dirname+"/success.html");
         }
         else{
@@ -58,8 +59,12 @@ app.post("/",function(req,res){
     });
 
      request.write(jsonData);
-    request.end();
+     request.end();
   
+    }else{
+        res.redirect("/");
+    }
+
 });
 
 app.post("/failure",function(req,res){
@@ -74,8 +79,8 @@ app.listen(process.env.PORT || 3000,function(){
 
 
 // Api key
-// de9225de3e842ab13ac2be830f9ce44e-us18
+// c1c19a92d504d269e040f18c7d63cb65-us18
 
 // List id
-// fd40b5d4df
+// 6091d8d480
 // https://blooming-cove-13593.herokuapp.com/
