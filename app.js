@@ -83,4 +83,3 @@ app.listen(process.env.PORT || 3000,function(){
 
 // List id
 // 6091d8d480
-// https://blooming-cove-13593.herokuapp.com/
